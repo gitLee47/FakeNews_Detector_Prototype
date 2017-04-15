@@ -3,12 +3,18 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Facebook post</title>
+		<title>Facebook post template</title>
 		<link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
+</script>
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -78,9 +84,9 @@
                           <div class="col-sm-8">
 
                                <div class="panel panel-default">
-                                 <div class="panel-heading"><a href="#" class="pull-right">color icon</a> <h4>Facebook Account Name</h4></div>
+                                 <div class="panel-heading"><a href="#" class="pull-right"><span class="glyphicon glyphicon-ok-circle green" data-toggle="popover" data-content="Some content inside the popover" data-trigger="hover" style="color: green; font-size: 2em;"></span></a> <h4>Facebook Account Name</h4></div>
                                   <div class="panel-body">
-                                    <img src="//placehold.it/150x150" class="img-circle pull-right"> <a href="#">This is where the user puts their message/comments about the post</a>
+                                    <img src="//placehold.it/150x150" class="img-circle pull-right"> This is where the user puts their message/comments about the post
                                     <div class="clearfix"></div>
                                     <hr>
                                     
@@ -99,12 +105,36 @@
                                     </div>
                                     </form>
                                     
+<!-- <span class="glyphicon glyphicon-remove-circle"></span> -->
+<!-- <span class="glyphicon glyphicon-ban-circle"></span> -->
+
+                              <div class="comment-form">
+                           <br />
+                       </div>
+                       <div class="comment">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+
+                               <h4 class="media-heading">This could be where the comments go in our template???????</h4> 
+                                <a href="#" class="anchor-time">51 mins</a>
+                              </div>
+                            </div>
+                       </div>
+
+
                                   </div>
+
                                </div>
 
 
             </div>
             <!-- /main -->
+
           
         </div>
     </div>
@@ -112,7 +142,7 @@
 
 
 <!--post modal-->
-<div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div id="postModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
@@ -134,7 +164,7 @@
       </div>
   </div>
   </div>
-</div>
+</div> -->
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
