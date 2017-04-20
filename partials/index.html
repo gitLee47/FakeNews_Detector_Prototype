@@ -13,10 +13,56 @@
 
 
     <script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();   
+$(function() {
+    $('#hoverbox').hover(function() { 
+        $('#hoverbox1').show(); 
+    }, function() { 
+        //$('#hoverbox1').hide();
+        $('#hoverbox1').mouseleave(function(){
+          $('#hoverbox1').hide();
+        });
+    });  
 });
 </script>
+
+<style>
+#hoverbox{
+  height: 30px;
+  width: 30px;
+/*  background-color: black;*/
+  position: absolute;
+  top: 15%;
+  left: 76.5%;
+  z-index: 9999;
+  cursor: pointer;
+}
+#hoverbox1{
+  height: 220px;
+  width: 200px;
+  background-color: black;
+  position: absolute;
+  top: 15%;
+  left: 80%;
+  z-index: 999;
+  display: none;
+}
+.img1{
+  height: 110px;
+  width: 200px;
+  background-color: red;
+}
+.img2{
+  height: 110px;
+  width: 200px;
+  background-color: green;
+}
+.fform{
+  height: 110px;
+  width: 200px;
+  background-color: red;
+}
+</style>
+
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -24,6 +70,19 @@ $(document).ready(function(){
 	</head>
 	<body>
 <div class="wrapper">
+
+<div id="hoverbox"></div>
+<div id="hoverbox1">
+<div class="img1"></div>
+<div class="img2"></div>
+<div class="fform">
+<form>
+    <input type="text" id="fname" name="firstname" placeholder="Your name...">
+      <input type="submit" value="Submit">
+      </form>
+</div>
+</div>
+
     <div class="box">
         <div class="row row-offcanvas row-offcanvas-left">
           
@@ -86,7 +145,13 @@ $(document).ready(function(){
                           <div class="col-sm-8">
 
                                <div class="panel panel-default">
-                                 <div class="panel-heading"><a href="#" class="pull-right"><span class="glyphicon glyphicon-ok-circle green" data-toggle="popover" data-content="Some content inside the popover" data-trigger="hover" style="color: green; font-size: 2em;"></span></a> <h4><i class="glyphicon glyphicon-user" style="font-size:35px;"></i> Facebook Account Name</h4></div>
+                                 <div class="panel-heading"><a href="#" class="pull-right">
+
+                                 <span class="glyphicon glyphicon-ok-circle green" style="color: green; font-size: 2em;"></span>
+
+
+
+                                 </a> <h4><i class="glyphicon glyphicon-user" style="font-size:35px;"></i> Facebook Account Name</h4></div>
                                   <div class="panel-body">
                                     <img src="//placehold.it/150x150" class="img-circle pull-right"> This is where the user puts their message/comments about the post
                                     <div class="clearfix"></div>
