@@ -5,7 +5,7 @@ var fbApp = angular.module('AngularApp', ['ngRoute','ui.bootstrap', 'ngAnimate',
 fbApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 		when('/profile', {
-			templateUrl: 'partials/profile.htm',
+			templateUrl: 'partials/post.html',
 			controller: 'appController' 
 		}).
         otherwise({

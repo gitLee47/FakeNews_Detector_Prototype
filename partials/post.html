@@ -1,0 +1,93 @@
+<div class="padding">
+	<div ng-repeat="post in _posts" >
+		<div class="full col-sm-12">               
+			<!-- main col right -->
+			<div class="col-sm-2"></div>
+			<div class="col-sm-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<a href="#" class="pull-right">
+							<span id="marker{{post.postid}}"  ng-attr-class="{{(post.score >= 0.75) ? 'glyphicon glyphicon-ok-circle real my-tooltip' : (post.score < 0.75 && post.score >= 0.50) ?'glyphicon glyphicon-ban-circle neutral my-tooltip' : 'glyphicon glyphicon-remove-circle fake my-tooltip' }}" ng-mouseover="showPopover(post.postid, post.score)"></span>
+						</a>
+						<h4>{{post.username}}</h4>
+					</div>
+					<div class="panel-body">
+						{{post.message}}
+						<div class="clearfix"></div>
+						<hr>
+						
+						<span class="glyphicon glyphicon-thumbs-up">{{post.likes}} </span>
+						<i class="fa fa-smile-o"></i> {{post.haha}} <i class="fa fa-frown-o"></i> {{post.sad}} <i class="fa fa-meh-o"></i> {{post.angry}}
+						<span style="float:right;">
+							{{post.comments}} comments {{post.shares}} Shares
+						</span>
+						
+						<hr>
+						<form>
+							<div class="input-group">
+								<div class="input-group-btn">
+								<button class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+								<button class="btn btn-default">
+
+								<i class="glyphicon glyphicon-share"> Share</i></button>
+								</div>
+								<input type="text" class="form-control" placeholder="Add a comment..">
+							</div>
+						</form>
+									
+	<!-- <span class="glyphicon glyphicon-remove-circle"></span> -->
+	<!-- <span class="glyphicon glyphicon-ban-circle"></span> -->
+
+						<div class="comment-form">
+						   <br />
+						</div>
+					   <div class="comment" ng-repeat="comment in post.commentlist">
+							<div class="media panel panel-default">
+							  <div class="row media-left">
+								<a href="#">
+									<div class="col-sm-1">
+									  <i class="glyphicon glyphicon-user" style="font-size:35px;"></i>
+									</div>
+									<div class="col-sm-4">
+									  <h5 style="color:#365899">{{comment.from.name}}</h5>
+									</div>
+								</a>
+							  </div>
+							  <div class="media-body">
+								<h4 class="media-heading">{{comment.message}} </h4> 
+								<a href="#" class="anchor-time">Posted on: {{comment.created_time}}</a>
+							  </div>
+							</div>
+					   </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="hovercard" ng-show="popoverIsVisible" ng-mouseleave="hidePopover()"> 
+					<div class="row graph-section">
+						<div id="chartContainer{{post.postid}}" style="padding-left:50px; padding-top:8px;"></div>
+					</div>
+				
+					<div class="row detail-section"> 
+						<p> {{post.message}} </p>
+					</div>
+					
+					<div class="row comment-section">
+						<form action="#" class="comment_form">
+							<div>
+								<textarea rows="5" name="comment" id="comment" placeholder="Do you think otherwise?"></textarea>
+							</div>
+
+							<div>
+								<input type="submit" name="submit" value="Add Thoughts">
+							</div>						
+						</form>
+					</div>
+				</div>
+		
+				
+			</div>
+			<!-- /main -->
+		</div>
+	</div>
+</div>
