@@ -3,7 +3,7 @@
 // the storeController contains two objects:
 // - store: contains the product list
 // - cart: the shopping cart object
-fbApp.controller('appController', function($scope, $routeParams, DataService) {
+fbApp.controller('appController', function($scope, $routeParams, DataService, toaster) {
 
 	$scope.store = DataService.store;
 	
@@ -12,14 +12,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
     }
 	
 	$scope.addMarker = function(id, score) {
-		console.log("hello");
-		if(score < 0.75 && score >= 0.50) {
+		if(score < 0.66 && score >= 0.33) {
 			$("#marker"+id).removeClass("glyphicon-ok-circle");
 			$("#marker"+id).removeClass("real");
 			$("#marker"+id).addClass("glyphicon-ban-circle");
 			$("#marker"+id).addClass("neutral");
 		}
-		else if(score < 0.50) {
+		else if(score < 0.33) {
 			$("#marker"+id).removeClass("glyphicon-ok-circle");
 			$("#marker"+id).removeClass("real");
 			$("#marker"+id).addClass("glyphicon-remove-circle");
@@ -66,11 +65,20 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
 	  $scope.popoverIsVisible = false;
 	};
 	
+	$scope.share = function (id,score) {
+		if(score <= 0.33){
+			toaster.pop(104, "", "Please Check the validity of the post!!", 10000, 'trustedHtml');
+			$scope.showPopover(id,score);
+		}
+		else
+			toaster.pop(200, "", "Shared Successfully!", 10000, 'trustedHtml');
+	};
+	
 	$scope._posts = [
       {
           "username":"The Controversial Files",
 		  "postid":1,
-		  "score":0.75,
+		  "score":0.34,
           "message":"Shipment Of Samsung Smartphones Explodes During Transport A semi-trailer truck exploded this morning in Florida, after the Samsung phones it was carrying began exploding, killing 3 people and injuring 11 others. According to witnesses, a series of explosion took place in the truck’s cargo trailer, setting it ablaze. Read more: http://www.thedailytrends.net/2016/09/shipment-of-samsung-smartphones.html",
          "link": "https://www.facebook.com/dcontroversialfiles/posts/1592033104434196",
          "created_time": "2016-09-14T08:54:41+0000",
@@ -79,7 +87,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
          "reactions":239,
 		 "likes":161,"wow":37,"haha":29,"sad":8,"angry":2,"love":1,
           "shares":108,
-         "comments":33, 
+         "comments":33,
+		 "influencesc": 57,
+		 "contentsc":66,
+		 "commentsc":29,
+		 "sharesc":22,
+		 "likesc":24,
+		 "sadsc":88,
           "commentlist":
     [
       {
@@ -313,7 +327,7 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
        {
           "username":"CNN",
 		  "postid":2,
-		  "score":0.5,
+		  "score":0.70,
           "message":"BREAKING NEWS: Theresa May makes shock announcement that she will seek an early general election held on June 8.         http://www.cnn.com/2017/04/18/europe/uk-snap-election-theresa-may/index.html?sr=fbCNN041817uk-snap-election-theresa-may1014AMStoryLink&linkId=36613274",
          "link": "https://www.facebook.com/cnn/posts/10156468497861509",
          "created_time": "2017-04-18T10:14:01+0000",
@@ -322,7 +336,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
          "reactions":1128,
         "likes":950,"wow":107,"haha":20,"sad":3,"angry":8,"love":40,
           "shares":271,
-         "comments":99, 
+         "comments":99,
+		"influencesc": 70,
+		 "contentsc":100,
+		 "commentsc":34,
+		 "sharesc":26,
+		 "likesc":32,
+		 "sadsc":88,		 
           "commentlist":
     [
       {
@@ -557,7 +577,7 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
        {
           "username":"FESLER BUILT",
 		  "postid":3,
-		  "score":0.25,
+		  "score":0,
           "message":"Even with this two clowns there she only could get 10,000 people and Trump did over 11,000 all by himself and it cost him nothing. Hillary paid over 62 million for her largest event yet. DO YOU PEOPLE have it right on who you want to win? Someone who takes your money and throws it away or someone that will fight for you and stop this nonsense?",
          "link": "https://www.facebook.com/FeslerBuilt/posts/10154629080574030",
          "created_time": "2016-11-07T07:13:01+0000",
@@ -566,7 +586,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
          "reactions":204,
         "likes":138,"wow":5,"haha":23,"sad":2,"angry":35,"love":1,
           "shares":230,
-         "comments":39, 
+         "comments":39,
+		"influencesc": 38,
+		 "contentsc":37,
+		 "commentsc":33,
+		 "sharesc":25,
+		 "likesc":23,
+		 "sadsc":82,		 
           "commentlist":
     [
       {
@@ -799,7 +825,7 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
 },      {
           "username":"Thinking Humanity",
 		  "postid":4,
-		  "score":0.85,
+		  "score":1,
           "message":"Amazing video! Orchestral musicians play in the middle of the sea and bring whales to surface!",
          "link": "https://www.facebook.com/ThinkingHumanity/videos/1085420981518790/",
          "created_time": "2016-04-13T05:50:41+0000",
@@ -808,7 +834,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
          "reactions":129,
         "likes":105000,"wow":7087,"haha":154,"sad":36,"angry":10,"love":15000,
           "shares":543414,
-         "comments":9900, 
+         "comments":9900,
+		"influencesc": 66,
+		 "contentsc":100,
+		 "commentsc":36,
+		 "sharesc":63,
+		 "likesc":55,
+		 "sadsc":81,		 
           "commentlist":
     [
       {
@@ -1042,7 +1074,7 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
        {
           "username":"The Huffington Post",
 		  "postid":5,
-		  "score":0.60,
+		  "score":0.86,
           "message":"“Really and truly, when people ask what me eat and drink to live so long, I say to them that I eat everything, except pork and chicken,” she said, “and I don’t drink rum and dem tings.”",
          "link": "https://www.facebook.com/HuffingtonPost/posts/10154902432361130",
          "created_time": "2017-04-18T22:00:55+0000",
@@ -1051,7 +1083,13 @@ fbApp.controller('appController', function($scope, $routeParams, DataService) {
          "reactions":1555,
         "likes":1279,"wow":45,"haha":6,"sad":0,"angry":0,"love":228,
           "shares":556,
-         "comments":99, 
+         "comments":99,
+		"influencesc": 68,
+		 "contentsc":100,
+		 "commentsc":16,
+		 "sharesc":30,
+		 "likesc":34,
+		 "sadsc":100,		 
           "commentlist":
     [
       {
